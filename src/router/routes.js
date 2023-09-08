@@ -1,9 +1,44 @@
+import MainLayout from 'layouts/MainLayout.vue'
+
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: MainLayout,
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
+      {
+        path: '',
+        redirect: 'home'
+      },
+      {
+        path: 'home',
+        component: () => import('pages/HomePage.vue'),
+        meta: { pageTitle: 'Home' }
+      },
+      {
+        path: 'wordform-:wordform_id',
+        component: () => import('pages/WordformPage.vue'),
+        meta: { pageTitle: 'Wordform' }
+      },
+      {
+        path: 'sets',
+        component: () => import('pages/SetsPage.vue'),
+        meta: { pageTitle: 'Sets' }
+      },
+      {
+        path: 'set-:set_id',
+        component: () => import('pages/SetsPage.vue'),
+        meta: { pageTitle: 'Set' }
+      },
+      {
+        path: 'lemmas',
+        component: () => import('pages/LemmasPage.vue'),
+        meta: { pageTitle: 'Lemmas' }
+      },
+      {
+        path: 'lemma-:lemma_id',
+        component: () => import('pages/LemmaPage.vue'),
+        meta: { pageTitle: 'Lemma' }
+      }
     ]
   },
 
